@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jsh68\\\\Desktop\\\\css_ex\" -Recurse -File)",
-      "Bash(Select-Object FullName)",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\jsh68\\\\Desktop\\\\css_ex\" | ForEach-Object { $_.FullName })"
-    ]
-  }
-}
