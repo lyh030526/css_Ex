@@ -6,68 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-  /*
-   * [ex_4] position 속성과 z-index
-   *
-   * position 값 종류:
-   *   static   → 기본값. 문서 흐름대로 배치 (top/left 무시)
-   *   relative → 원래 자리를 유지하면서 top/left로 이동 + 자식의 absolute 기준점
-   *   absolute → 가장 가까운 position: relative 부모를 기준으로 위치 지정
-   *   fixed    → 브라우저 화면(viewport) 기준으로 고정
-   */
-
-  .parent {
-    width: 300px;
-    height: 200px;
-    background-color: #ddd;
-
-    /*
-     * 15. position: relative
-     *   자식의 absolute 기준점이 된다.
-     *   relative만 쓰고 top/left를 안 주면 원래 자리에 그대로 있다.
-     */
-    position: relative;
-
-    /* 좌우 auto → 블록 요소를 가로 중앙에 배치 */
-    margin: 50px auto;
-  }
-
-  .child {
-    width: 80px;
-    height: 80px;
-    background-color: red;
-    color: white;
-
-    /*
-     * 15. position: absolute
-     *   부모(.parent)의 relative를 기준으로
-     *   top / left / right / bottom 으로 위치를 지정한다.
-     */
-    position: absolute;
-
-    /*
-     * 정중앙 배치 공식:
-     *   1) top: 50%  → 부모 높이의 50% 지점(=중간)에서 시작
-     *   2) left: 50% → 부모 너비의 50% 지점에서 시작
-     *   → 아직 요소의 왼쪽 위 꼭짓점이 중앙에 위치한 상태
-     *   3) transform: translate(-50%, -50%)
-     *      → 자기 자신의 너비·높이의 50%만큼 위·왼쪽으로 당겨서
-     *         요소의 정중앙이 부모의 정중앙과 일치하게 만든다.
-     */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    /*
-     * 07. z-index: 요소가 겹칠 때 쌓이는 순서
-     *   숫자가 클수록 앞(위)에 표시된다.
-     *   position이 static이 아닐 때만 동작한다.
-     */
-    z-index: 10;
-  }
-</style>
-
 <div class="parent">
   부모 박스
   <div class="child">중앙</div>

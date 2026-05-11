@@ -6,55 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-  /*
-   * [ex_1] 기본 CSS 속성 - 배경색 / 크기 / 글자 / 링크 / 리스트
-   */
-
-  .box-1 {
-    /* 01. 배경색: #hex 값으로 색상 지정 */
-    background-color: #bef264;
-
-    /* 02. 가로 너비 고정 */
-    width: 300px;
-
-    /* 03. 세로 높이 고정 */
-    height: 150px;
-
-    /* 04. 글자 스타일 & 정렬 */
-    font-size: 20px;       /* 글자 크기 */
-    font-weight: bold;     /* 굵기: bold(굵게) / normal(보통) */
-    color: #333;           /* 글자 색상 (짙은 회색) */
-    text-align: center;    /* 가로 중앙 정렬 */
-
-    /*
-     * line-height를 height와 같은 값으로 설정하면
-     * 한 줄 텍스트를 세로 중앙에 배치할 수 있다.
-     */
-    line-height: 150px;
-  }
-
-  .link-style {
-    /* 05. text-decoration: none → <a> 태그 기본 밑줄 제거 */
-    text-decoration: none;
-    color: blue;
-
-    /*
-     * display: block 으로 바꾸면 링크가 줄 전체를 차지해서
-     * 클릭 영역이 넓어진다. (기본값 inline은 텍스트 너비만큼만)
-     */
-    display: block;
-    margin-top: 10px;
-  }
-
-  .no-bullet {
-    /* 06. list-style: none → <ul> 기본 점(•) 제거 */
-    list-style: none;
-
-    /* 브라우저 기본 padding이 있어서 함께 0으로 초기화 */
-    padding: 0;
-  }
-</style>
 
 <div class="box-1">Essential CSS 18</div>
 <a href="#" class="link-style">밑줄 없는 링크 예제</a>

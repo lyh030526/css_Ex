@@ -6,51 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-  /*
-   * [ex_3] Flexbox 레이아웃
-   *
-   * display: flex 를 부모에 적용하면
-   * 자식 요소들이 자동으로 가로로 나란히 배치된다.
-   * 방향·정렬·간격을 부모에서 일괄 제어할 수 있다.
-   */
-
-  /* 14. Flex 컨테이너 (부모) */
-  .container {
-    display: flex;
-    background-color: #eee;
-    padding: 10px;
-
-    /* gap: flex 자식 요소들 사이의 간격 (margin 없이도 간격 확보) */
-    gap: 10px;
-
-    /*
-     * justify-content: 주축(기본=가로) 방향 정렬
-     *   flex-start  → 왼쪽 정렬 (기본값)
-     *   center      → 가운데
-     *   flex-end    → 오른쪽
-     *   space-between → 양끝 붙이고 나머지 균등 분배
-     *   space-around  → 각 아이템 양쪽에 균등 여백
-     */
-    justify-content: space-around;
-  }
-
-  /* Flex 아이템 (자식) */
-  .item {
-    width: 100px;
-    height: 100px;
-    background-color: #333;
-    color: white;
-
-    /*
-     * 아이템 자체도 flex 컨테이너로 만들어
-     * 내부 텍스트를 가로·세로 중앙 정렬한다.
-     */
-    display: flex;
-    justify-content: center; /* 가로 중앙 */
-    align-items: center;     /* 세로 중앙 (교차축 정렬) */
-  }
-</style>
 
 <div class="container">
   <div class="item">1</div>
