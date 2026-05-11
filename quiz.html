@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>오늘의 식당</title>
+  <style>
+
+    /*
+     * [quiz] 오늘의 식당 — ex_1 ~ ex_5 개념 종합 실습
+     *
+     * 각 CSS 속성 옆 번호는 Essential CSS 18 항목 번호와 대응된다.
+     */
+
+    /* ⑨ box-sizing: border-box — 전역 적용으로 크기 계산 단순화 */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* ① background(hex 색상코드) */
+    body {
+      background: #f5f0eb;
+      margin: 0;       /* ⑪ 브라우저 기본 margin 제거 */
+      padding: 40px;   /* ⑫ 화면 가장자리에 안쪽 여백 추가 */
+      font-size: 16px; /* ④ 기본 글자 크기 */
+      color: #333;     /* ④ 기본 글자 색상 */
+    }
+
+    .header {
+      text-align: center;    /* ④ 텍스트 가운데 정렬 */
+      margin-bottom: 40px;   /* ⑪ 헤더 아래 여백 */
+    }
+
+    .header h1 {
+      font-size: 36px;    /* ④ */
+      font-weight: bold;  /* ④ */
+      color: #b5451b;     /* ④ 주황빛 갈색 */
+    }
+
+    /*
+     * ⑭ display: flex — 카드들을 가로로 나란히 배치
+     * ⑥ list-style: none — <ul> 기본 점 제거
+     */
+    .menu-list {
+      display: flex;
+      list-style: none;
+      padding: 0;             /* ⑫ */
+      margin: 0;              /* ⑪ */
+      text-align: center;     /* ④ */
+      justify-content: center; /* 카드들을 화면 가운데 정렬 */
+    }
+
+    /*
+     * ⑮ position: relative — .badge의 absolute 기준점으로 사용
+     * ① background: rgba — 투명도 있는 흰색 배경 (마지막 0.9 = 90% 불투명)
+     */
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.9);
+      width: 200px;          /* ② */
+      height: 240px;         /* ③ */
+      border: 2px solid #ddd; /* ⑧ */
+      border-radius: 16px;   /* ⑩ 모서리를 둥글게 */
+      padding: 24px 16px;    /* ⑫ 상하 24px, 좌우 16px */
+      margin: 8px;           /* ⑪ 카드 사이 간격 */
+
+      /*
+       * overflow: hidden — 자식 요소가 카드 밖으로 삐져나오면 잘라냄
+       * border-radius와 함께 쓰면 모서리가 깔끔하게 처리된다.
+       */
+      overflow: hidden;
+    }
+
+    /* ⑱ :first-child — 첫 번째 카드(라멘)에만 주황 테두리로 추천 강조 */
+    .card:first-child {
+      border: 2px solid #e07b39;
+    }
+
+    /*
+     * ⑮ position: absolute — 부모(.card)의 relative 기준으로 위치 지정
+     * ⑦ z-index — 카드 내용 위에 배지가 보이도록 쌓임 순서 설정
+     */
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      background: #e07b39;   /* ① */
+      color: #fff;           /* ④ */
+      font-size: 12px;       /* ④ */
+      font-weight: bold;     /* ④ */
+      padding: 4px 8px;      /* ⑫ 상하 4px, 좌우 8px */
+      border-radius: 20px;   /* ⑩ 알약 모양 */
+    }
+
+    .card h2 {
+      font-size: 22px;      /* ④ */
+      font-weight: bold;    /* ④ */
+      margin-bottom: 8px;   /* ⑪ */
+    }
+
+    .price {
+      color: #b5451b;        /* ④ 강조색 */
+      font-size: 18px;       /* ④ */
+      font-weight: bold;     /* ④ */
+      margin-bottom: 16px;   /* ⑪ */
+    }
+
+    /*
+     * ⑤ text-decoration: none — 링크 기본 밑줄 제거
+     * ⑬ display: inline-block — 인라인처럼 텍스트와 함께 흐르지만
+     *    width·height·padding을 블록처럼 적용 가능
+     */
+    .card a {
+      text-decoration: none;
+      display: inline-block;
+      background: #e07b39;   /* ① 버튼 배경 */
+      color: #fff;           /* ④ */
+      padding: 8px 20px;     /* ⑫ */
+      border-radius: 8px;    /* ⑩ */
+      font-size: 14px;       /* ④ */
+    }
+
+    /* ⑰ :hover — 버튼에 마우스를 올리면 더 진한 색으로 변경 */
+    .card a:hover {
+      background: #a0330a;
+    }
+
+    /*
+     * ⑬ display: none — 요소를 완전히 숨김 (공간도 차지하지 않음)
+     *   display: block 으로 바꾸면 다시 보인다.
+     *   cf. visibility: hidden 은 공간은 유지하면서 안 보이게 한다.
+     */
+    .notice {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🍽️ 오늘의 식당</h1>
+    <p>맛있는 한 끼를 즐겨보세요</p>
+  </div>
+
+  <!-- 메뉴 카드 목록: flex로 가로 정렬 -->
+  <ul class="menu-list">
+    <!-- 첫 번째 카드: :first-child 선택자로 주황 테두리 적용됨 -->
+    <li class="card">
+      <!-- badge: absolute로 카드 오른쪽 위에 고정 -->
+      <span class="badge">추천</span>
+      <h2>🍜 라멘</h2>
+      <p class="price">₩12,000</p>
+      <a href="#">주문하기</a>
+    </li>
+    <li class="card">
+      <h2>🍣 초밥</h2>
+      <p class="price">₩18,000</p>
+      <a href="#">주문하기</a>
+    </li>
+    <li class="card">
+      <h2>🍰 케이크</h2>
+      <p class="price">₩8,000</p>
+      <a href="#">주문하기</a>
+    </li>
+  </ul>
+
+  <!-- display: none 으로 현재 숨겨진 공지 영역 -->
+  <div class="notice">
+    ⚠️ 오늘은 라멘 재료가 소진되었습니다.
+  </div>
+
+</body>
+</html>

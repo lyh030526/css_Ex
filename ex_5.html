@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+  /*
+   * [ex_5] 가상 클래스 선택자(:hover, :first-child) & transition
+   *
+   * 가상 클래스(pseudo-class): 요소의 특정 상태나 위치를 선택하는 선택자
+   *   :hover      → 마우스 커서가 올려진 순간
+   *   :first-child → 형제 요소 중 첫 번째인 요소
+   *   :last-child  → 형제 요소 중 마지막인 요소
+   *   :nth-child(n)→ 형제 요소 중 n번째인 요소
+   */
+
+  .list-item {
+    padding: 15px;
+    background-color: #f0f0f0;
+    margin-bottom: 5px;
+    list-style: none;
+
+    /*
+     * transition: 속성값이 변할 때 부드럽게 전환되도록 설정
+     *   0.3s → 0.3초 동안 애니메이션
+     *   특정 속성만 적용하려면: transition: background-color 0.3s;
+     */
+    transition: 0.3s;
+  }
+
+  /* 17. :hover — 마우스를 올렸을 때 적용되는 스타일 */
+  .list-item:hover {
+    background-color: #333;   /* 배경을 어둡게 */
+    color: #bef264;            /* 글자를 밝게 */
+    cursor: pointer;           /* 마우스 커서를 손 모양으로 변경 */
+  }
+
+  /*
+   * 18. :first-child — 부모 안에서 첫 번째 자식인 요소만 선택
+   *   여기서는 <ul> 안의 첫 번째 <li>에만 왼쪽 강조 선을 추가
+   */
+  .list-item:first-child {
+    border-left: 10px solid #bef264; /* 왼쪽 굵은 선으로 공지사항 강조 */
+    font-weight: bold;
+  }
+</style>
+
+<ul>
+  <li class="list-item">공지사항 (첫 번째)</li>
+  <li class="list-item">일반 게시글 1</li>
+  <li class="list-item">일반 게시글 2</li>
+</ul>
+</body>
+</html>

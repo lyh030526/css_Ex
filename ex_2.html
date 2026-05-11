@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+  /*
+   * [ex_2] 박스 모델 - border / margin / padding / border-radius / box-sizing
+   *
+   * CSS 박스 모델 구조 (바깥 → 안쪽 순서):
+   *   margin  →  border  →  padding  →  content
+   */
+
+  /*
+   * 09. box-sizing: border-box
+   *   기본값(content-box)은 width가 content 영역만의 너비라서
+   *   padding과 border가 추가되면 실제 크기가 더 커진다.
+   *   border-box로 설정하면 width 안에 padding·border가 포함되어
+   *   크기 계산이 훨씬 직관적이다. 전역(*) 적용이 권장된다.
+   */
+  * { box-sizing: border-box; }
+
+  .box-2 {
+    width: 200px;
+    background-color: white;
+
+    /*
+     * 08. border: 두께 모양 색상  (단축 속성)
+     *   모양: solid(실선) / dashed(점선) / dotted(점점선) 등
+     */
+    border: 5px solid #333;
+
+    /* 10. border-radius: 모서리를 둥글게 (값이 클수록 더 둥글다) */
+    border-radius: 20px;
+
+    /*
+     * 11. margin: 바깥 여백 — 이 요소와 다른 요소 사이의 간격
+     *   margin: 50px  →  상하좌우 모두 50px
+     */
+    margin: 50px;
+
+    /*
+     * 12. padding: 안쪽 여백 — border와 content 사이의 공간
+     *   padding: 30px  →  상하좌우 모두 30px
+     */
+    padding: 30px;
+  }
+</style>
+
+<div class="box-2">
+  테두리 안쪽은 Padding, 테두리 바깥은 Margin입니다.
+</div>
+</body>
+</html>
